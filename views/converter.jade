@@ -1,0 +1,143 @@
+extends layout
+
+block head
+  title=title
+    
+  <!-- Custom styles for this template -->
+  link(rel="stylesheet", href="/stylesheets/lightbox/lightbox.css")
+  link(rel="stylesheet", href="/stylesheets/projects.css")
+
+
+block content
+  // navigation bar at top of all pages
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    //left title
+    .col-md-2
+      a(href='/')
+        i.fa.fa-arrow-left.fa-2x
+    .col-md-8
+      h1 DC/AC Converter
+  <!-- Nav bar end-->
+
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        h1 Intro
+        p
+          | In the fall of 2015 I took a power electronics course for the first time and learned about all sorts of converters and amplifiers. During the semester we built several different types of class D amplifers and power converters. For my final project in the class I built a DC/AC converter. This page explains the process I took and what I came up with.
+
+        p
+          | The original inspiration was to build a 12V to 120AC converter so that I could run a compressor off of my Jeep. I had gotten stuck a couple of times working on the Jeep and not being able to run power tools because they had either run out of battery power or didn't have a source strong enough to power what I wanted to run. My original idea was to build a 2000W power converter that I could run off of my car battery, which my professor generally laughed at and told me that the supplies in the lab only provided me with 90W and so I'd have to scale my project down. I scaled it back, but I still learned quite a bit. I haven't gotten around to building the full scale version, but its on my enormous list of projects to work on.
+
+        p
+          | The basic layout for my design was as follows. I originally wanted to put in a flyback converter and close a feedback loop around the buck converter for stability, ended cutting those out of the project and instead explored different types of methodologies of making a DC/AC converter.
+       
+
+    .row
+      .col-md-10.col-md-offset-1 
+        a(href='/images/converter/first draft.png', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/converter/first draft.png', width='640', height='360')
+        br
+          
+        h1 Version 1
+
+
+        p
+          | I wanted to learn about how different types of DC/AC converters worked and some of the trade offs between them. So I started out with a simple Buck regulator that fed an H-bridge. Here is the output I got from the converter without the filter attached to it. If you'd like to check out part of my messy lab notebook that I wrote down most of the design justifications for the regulator, design for the H-bridge, and control hardware you can view it
+          a(href='/images/converter/basicConverterMath.jpg', data-lightbox='version1', alt='')  here. 
+          | This is a short sided design in hind sight, but during the time that I made this circuit that I was doing the best I knew how to do.
+          a(href='/images/converter/page2.jpg', data-lightbox='version1', alt='')
+          a(href='/images/converter/page3.jpg', data-lightbox='version1', alt='')
+    .row
+      .col-md-10.col-md-offset-1 
+        a(href='/images/converter/Hbridgecrop.png', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/converter/Hbridgecrop.png', width='640', height='360')
+        br
+        p 
+          | The first version of this circuit showed me that this is frankly a horrible way to build a sign wave. Without any sort of filtering all of the harmonics are present, which generates a square wave. This leads to a ton of harmonic distortion and few devices would probably be able to work off such a source. However, it is simple and doesn't take much design work to get working.
+
+    .row
+      .col-md-10.col-md-offset-1
+        h2 Version 2
+
+        p
+          | The second version of the converter I created was a 3 level converter with the amplitude changing every 60 degrees. I more or less hacked this solution together because I did not provide a true ground to the output and left both sides of the H-bridge floating. This would certainly allow the load to pull current through the body diodes and therefore is not a great solution, but that was a good learning point for me. Instead of turning off all of the FET's for a third of the phase, I should have turned off the top FET's and turned the bottom ones on. This would have provided a true ground to the load. Nevertheless, I had a "working version" of a 3 level converter, that gave a much better approximation of a sine wave, compared to the original square wave that I came up with in the first version.
+
+        p
+          | My lab notebook on this idea can be seen
+          a(href='/images/converter/version2.jpg', data-lightbox='version2', alt='')  here.        
+          br
+        a(href='/images/converter/3levelcrop.png', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/converter/3levelcrop.png', width='640', height='360')
+        br
+
+        p
+          | As you can see in the scope shot above, the regulator is not holding the voltage steady across a transition and there is an appreciable dip during the time the voltage is non zero. I believe this would be mitigated by adding a sizable cap across the terminals of the H bridge, which I did not have in this design. I did not size a cap, or put one in for this design, which I believe, would be one of many improvements to do to this design.
+
+    .row
+      .col-md-10.col-md-offset-1
+        h2 Version 3
+
+
+        p 
+          | After having constructed the first couple of designs I didn't find myself terribly happy with the work I had accomplished. Yes, I had built a psuedo DC/AC converter, but frankly the sign wave did not look very nice and I wanted to build something with fairly low THD. Short of ideas, other than "throw a filter on it", which I knew would do much better, but wouldn't reject nearly enough of the harmonics to provide a clear sine waveform. Additionally, I did not have inductors available to me that were big enought to filter out the  frequencies that I needed given that I was creating a 60Hz waveform. But more over, I wanted to come up with a more elegant solution the the ones I had come up with.
+
+        p
+          |I took to the internet for other ideas. There I learned about creating a sine wave with a modulated waveform. This provided several advantages. First it moved the switching energy up in frequency, which allowed me to create a 60 Hz wave, while nominally filtering 100kHz energy. This allowed me to filter the signal as I had inductors available that would filter adequately even 2 orders of magnitude below that frequency. 
+
+        p 
+          | In order to build the modulated signal I needed to build new control hardware for my FET controllers. Instead of banging the output up and down with a set duty cycle as in the previous two examples, the plan here was the bang the H-bridge up and down at 100kHz, but encode a sign wave into the 100kHz frequency with a duty cycle. The output would look like the blue line in the graphic below if done correctly. 
+
+        br
+        a(href='/images/converter/modulation.png', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/converter/modulation.png', width='640', height='360')
+        br
+        
+        p
+          | The catch 22 here as you can see that in order to generate the encoded sign wave, you first needed to create a sine wave. Well, I hadn't taken any analog design courses and didn't have the faintest idea of how to create a nearly perfect sine wave, fortunately the internet is nearly an endless resource of information and graphics on how to build all sorts of circuits. I read a few papers and settled on the sine wave generator seen below. Compliments of Texas instruments.
+
+        br
+        a(href='/images/converter/sinegen.png', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/converter/sinegen.png', width='640', height='360')
+        br
+
+        p
+          | A quick explanation of how this works is that the first opamp creates a square wave which is actively filtered by the second opamp to produce a sine wave. This wave is then fed into a comparator and compared against a triangle wave, which I generated with a schmitt trigger, just like the above graphic shows. This output of the comparator generates the blue waveform which is shown above as well.
+
+        p
+          | If the blue waveform is fed into a half bridge, the result is a two level sine wave generator that can be passively filtered to produce a nice sine wave, such as one in the graphic shone below. 
+
+        br
+        a(href='/images/converter/ACcrop.png', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/converter/ACcrop.png', width='640', height='360')
+        br
+
+        p
+          | I copied the output of this wave and then inverted the copy to control the other side of the H-bridge that I was working with to get a larger amplitude. Due the the fact that I hadn't stabilized my buck converter with a large enough capacitance, the output was going bonkers, which was the reason for the reduced amplitude that is seen here. I did not understand this at the time, but the stability was affected by having the output bouncing up and down at such a high frequency. However, this type of output was much more along the lines of what I was looking for. It clearly looks like a sign wave, which was awesome. I achieved my goal. 
+
+        p
+          | However, as I was reading online I figured out that sine waves could be generated with lower THD than this by adding more levels to the sign wave, so just like I did with the original square wave, I set out to make the 2-level PWM'd sine wave a 3-level PWM'd sine wave. This actually did not turn out to be too difficult. In order to generate another level, I controlled one side of the H-Bridge with a 60Hz square wave and the other side with the modulated wave. This produced a waveform like the one you see below.
+
+        br
+        a(href='/images/converter/trilevel.png', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/converter/trilevel.png', width='640', height='360')
+        br
+
+        p
+          | However, this waveform reintroduces a 60Hz energy component that I did not want in the waveform and so I opted to continue with the 2-level PWM'd sine wave in my final design, but holistically, more levels will absolutely provide a better sinewave. 
+
+        p
+          | The final control circuitry that I built for tri-level sine wave generator can be seen below. The H-bridge is not shown here, nor are the passive filters used for the buck converter and the output of the H-bridge. Also if you'd like to read through the notes that I wrote down while doing the rest of this project, 
+          a(href='/images/converter/version31.jpg', data-lightbox='version3', alt='')  here 
+          |are the last few pages.
+          a(href='/images/converter/version32.jpg', data-lightbox='version3', alt='')
+          a(href='/images/converter/version33.jpg', data-lightbox='version3', alt='')
+
+
+        br
+        a(href='/images/converter/controls.jpg', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/converter/controls.jpg', width='640', height='360')
+        br
+
+  script(type="text/javascript", src="/javascripts/lightbox/lightbox.js")
+

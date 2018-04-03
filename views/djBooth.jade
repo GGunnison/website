@@ -1,0 +1,73 @@
+extends layout
+
+block head
+  title=title
+    
+  <!-- Custom styles for this template -->
+  link(rel="stylesheet", href="/stylesheets/lightbox/lightbox.css")
+  link(rel="stylesheet", href="/stylesheets/projects.css")
+
+
+
+block content
+  // navigation bar at top of all pages
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    //left title
+    .col-md-2
+      a(href='/')
+        i.fa.fa-arrow-left.fa-2x
+    .col-md-8
+      h1 DJ Booth
+  <!-- Nav bar end-->
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        a(href='images/djBooth/fullSize/finished.jpg', data-lightbox='finished', alt='')
+          img.img-responsive.center-block.smaller(src='/images/djBooth/finished.jpg')
+
+    .row
+      .col-md-10.col-md-offset-1
+        h1 Intro
+        p
+          | After moving into a beautifully 
+          a(href='/images/djBooth/fullSize/pbe.jpg', data-lightbox='pbe', alt='') rebuilt fraternity 
+          | my sophomore year, with one of the most 
+          a(href='/images/djBooth/fullSize/boston.jpg', data-lightbox='boston', alt='') breathtaking views 
+          | of boston, Jacob Tims and I built a DJ booth for some of Boston and NYC's best DJ's to spin on. Not only does it look beautiful,
+          | but also sports sound responsive LED's which look brilliant and help in making some of the best rooftop events that Cambridge has ever seen.
+          | With a short deadline and a few all night work sessions we finished the morning of our party. 
+
+    .row
+      .col-md-10.col-md-offset-1
+        h1 Construction
+        p
+          | The booth's foundation is a 
+          a(href='/images/djBooth/fullSize/sillyDJpicture.jpg', data-lightbox='sillypicture', alt= '') frame 
+          | built of pressure treated 4x4's & 2x4's meant to withstand Boston's harshest winters. This thing is rock solid and has supported multiple large
+          | men jumping up and down on it, more than enough for a turntable and a laptop. From there Jacob and I overlaid the frame with beautiful pine 
+          | and top grade plywood for a beautiful finish. Every angle and joint were precisely put together for a clean and gorgeous finish. We sanded 
+          | it down and coated it in timber oil to waterproof and protect it. Even though its a hard wood, Boston's 
+          | winters are tough and we wanted this to last for forever. 
+
+        br
+
+        a(href='/images/djBooth/fullSize/bare.jpg', data-lightbox='bare', alt='')
+          img.img-responsive.center-block.smaller(src='/images/djBooth/bare.jpg')
+
+    .row
+      .col-md-10.col-md-offset-1
+
+        br 
+        p
+          | Once dry, we cut out polybarbonate panels and frosted them by roughly sanding the surfaces and covering once side in an semi-opaque vinyl sheet. 
+          | These panels were then installed in each of the three front wells of the booth and PBE was laid over the top of the middle panel. We finished! 
+          | But of course, the vision did not come alive until we put over 900 leds throughout the underside of the booth and made them change according to
+          | the music. Take a look, its a cool show to watch.
+
+    .row
+      .col-md-10.col-md-offset-1
+        h3.text-center 
+            .video-container
+              iframe(width='640', height='360', src='https://www.youtube.com/embed/4VTAUdwM8zw', frameborder='0', allowfullscreen='')
+
+  script(type="text/javascript", src="/javascripts/lightbox/lightbox.js")

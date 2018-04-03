@@ -1,0 +1,207 @@
+extends layout
+
+block head
+  title=title
+    
+  <!-- Custom styles for this template -->
+  link(rel="stylesheet", href="/stylesheets/lightbox/lightbox.css")
+  link(rel="stylesheet", href="/stylesheets/projects.css")
+
+
+block content
+  // navigation bar at top of all pages
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    //left title
+    .col-md-2
+      a(href='/')
+        i.fa.fa-arrow-left.fa-2x
+    .col-md-8
+      h1 The Mailman
+  <!-- Nav bar end-->
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        a(href='images/mailMan/fullSize/main.JPG', data-lightbox='main')
+          img.img-responsive.center-block(src='images/mailMan/main.JPG')
+        br
+        a(href='images/mailMan/fullSize/team.JPG', data-lightbox='team')
+          img.img-responsive.center-block(src='images/mailMan/team.JPG')
+    
+    .row
+      .col-md-10.col-md-offset-1
+        h2 Intro
+        p
+          | In January of 2014 I, Patrick McCabe, and John William competed in the  
+          a(href='http://maslab.mit.edu/2014/site/index.html') Mobile Autonomous Robotics Laboratory (MASLAB) 
+          | robotics competition at MIT, a month long competition to build a robot from scratch that finishes in a single-elimination tournament. 
+          | 17 teams competed, which ranged from about 3-5 members, our team of three can be seen above on the right half of the photo
+          |(Me:right, John:middle, Patrick:left). We are all EECS majors. 
+          b
+            | To make a very long, tiring, and stressful story short, we ended up coming in 1st place in the tournament.
+        p
+          | For reference, we were team 12, a.k.a “The Mailmen”, and our robot was “The Mailman”. Why? Because we deliver.
+    
+    .row
+      .col-md-10.col-md-offset-1
+        h2 Videos
+        p
+          | If videos are your thing and you just want to skip to some robot action then you can see each of our matches below. 
+          | The whole competition was recorded and is really long, but there are several shorter videos here of the matches our robot was in 
+          | so you don’t have to watch the whole thing.
+        h3.text-center Our First Round
+        .video-container
+          iframe(width='640', height='360', src='https://www.youtube.com/embed/zW7KSqkRJTs', frameborder='0', allowfullscreen='')
+        h3.text-center Our Second Round
+        .video-container
+          iframe(width='640', height='360', src='https://www.youtube.com/embed/G-_NKOVRFZ4', frameborder='0', allowfullscreen='')
+        h3.text-center Last Round and Awards
+        .video-container
+          iframe(width='640', height='360', src='https://www.youtube.com/embed/S2ZyTqTU1T0', frameborder='0', allowfullscreen='')
+        h3.text-center Entire Competition (Long)
+        .video-container
+          iframe(width='640', height='360', src='https://www.youtube.com/embed/YlDMnqRzJIk', frameborder='0', allowfullscreen='')
+    
+    .row
+      .col-md-10.col-md-offset-1
+        h2 Competition Rules
+        p
+          | The full rules and details can be found on the website 
+          a(href='http://maslab.mit.edu/2014/site/rules.html') here
+          | , but here is a quick run down of everything you need to know.
+        p
+          | The basic back story of the competition is that our robot is in a nuclear facility and it has a job to perform. 
+          | That job is to put active energy cells (green balls) into reactors (goals) and remove empty energy cells (red balls)
+          | from the facility (by dumping them over a yellow wall).
+        p
+          | There are six basic field elements (seen below, though the coloring is not exactly accurate). There are walls lined 
+          | with blue tape. These walls are just walls - nothing special. There are walls lined with yellow tape. These walls are 
+          | where red balls are dumped over to the opponents side of the field, which takes points away from your opponent.
+          | There are “reactors” (goals) lined with teal colored tape and putting green balls in the top and bottom of these
+          | reactors score points. Scoring in the top is worth more than scoring in the bottom. There are bonus points for scoring
+          | in both the top and the bottom as well. Lastly there is an “energy silo” that is lined with purple tape. More balls can be collected
+          | here if the robot has some kind of gripper. This is the only way to get more balls (excluding red balls being dumped on
+          | your field by the opponent) than what you start with on the field.
+        p The point system below:
+        img.img-responsive.center-block(src='images/mailMan/elements.jpg')
+        br
+        img.img-responsive.center-block(src='images/mailMan/field.jpg')
+        br
+        img.img-responsive.center-block(src='images/mailMan/scoring.jpg')
+    
+    .row
+      .col-md-10.col-md-offset-1
+        h2 Robot Hardware
+        p
+          | Based on the competition, here are the basic capabilities that a robot needs to have to perform all of the tasks.
+        ul
+          li Ball pickup mechanism to collect balls from the ground
+          li Lifting mechanism to raise the ball up about a foot in order to score in the top of the reactors
+          li Sorting mechanism to sort between red and green balls
+          li Dispensing mechanism for scoring in both the top and bottom of the reactors and for scoring over the interface wall
+          li Gripper or claw to extract balls from the energy silo
+    .row
+      .col-md-10.col-md-offset-1
+        h3 Ball Pickup
+        p
+          | We went with the conventional mechanism - a rubber band roller. It is basically foolproof. The rubber bands do a wonderful
+          | job at gripping the ball and flexing around it. Part of the magic also comes from the wire ramp that guides the ball from 
+          | off the floor to a few inches above the ground and into our lift mechanism. Patrick designed and 3D
+          | printed the rolloer below below.
+        a(href='images/mailMan/fullSize/ball_pickup_1.JPG', data-lightbox='ball_pickup')
+          img.img-responsive.center-block(src='images/mailMan/ball_pickup_1.JPG')
+        br
+        a(href='images/mailMan/fullSize/ball_pickup_2.JPG', data-lightbox='ball_pickup')
+          img.img-responsive.center-block(src='images/mailMan/ball_pickup_2.JPG')
+    .row
+      .col-md-10.col-md-offset-1
+        h3 Ball Lift
+        p
+          | This mechanism raises the ball from the bottom platform of our robot to the top. We used an 
+          a(href="http://en.wikipedia.org/wiki/Archimedes'_screw") Archimedes’ screw 
+          | for this, which I cut, drilled, and welded together. The screw rotates in a chamber,
+          | which you can see in the photo below with the front piece removed.
+        a(href='images/mailMan/fullSize/ball_lift.JPG', data-lightbox='ball_lift')
+          img.img-responsive.center-block(src='images/mailMan/ball_lift.JPG')
+    .row
+      .col-md-10.col-md-offset-1
+        h3 Ball Sorting
+        p
+          | Red balls must be sorted from green balls. This is done using two Pacman shaped disks and servos. I designed this to 
+          | prevent clogging. The first disk sorts green balls into one channel and red balls into another channel. The second disk 
+          | is what dispenses them for scoring. The first disk has a photo-emitter and detector pair for detecting when a ball needs 
+          | to be sorted. The webcam does the actual color detection upon pickup. So when a ball reaches the sorter, the program just
+          | looks up the color of the last ball that was picked up.
+        .image-set
+          a(href='images/mailMan/fullSize/ball_sorting_1.JPG', data-lightbox='ball_sorting')
+            img.img-responsive.center-block(src='images/mailMan/ball_sorting_1.JPG')
+          br
+          a(href='images/mailMan/fullSize/ball_sorting_2.JPG', data-lightbox='ball_sorting')
+            img.img-responsive.center-block(src='images/mailMan/ball_sorting_2.JPG')
+          br
+          a(href='images/mailMan/fullSize/ball_sorting_3.JPG', data-lightbox='ball_sorting')
+            img.img-responsive.center-block(src='images/mailMan/ball_sorting_3.JPG')
+    .row
+      .col-md-10.col-md-offset-1
+        h3 Ball Dispensing (scoring)
+        p
+          | Like I said above, the second Pacman disk is used to dispense the balls. That is not the complete story though. As you
+          | remember from competition rules, its benefitial to score green balls in the top and bottom of the reactors.
+          | So on top of dispensing balls out of the top of our robot, our dispenser can also dispense balls down a hole and into a
+          | funnel that guides the ball into the lower port of the reactor.
+          | This allows the robot to do its 
+          a(href='https://www.youtube.com/watch?v=S2ZyTqTU1T0#t=492', target='blank') “double tap”
+          | maneuver, which is where it scores one green ball in the top of the reactor, then backs up and scores another in the
+          | lower part of the reactor - giving us a lot of points. Red balls are also dispensed out of this hole and over the
+          | interface walls (onto the opponents field).
+        a(href='images/mailMan/fullSize/ball_scoring_1.JPG', data-lightbox='ball_scoring')
+          img.img-responsive.center-block(src='images/mailMan/ball_scoring_1.JPG')
+        br
+        a(href='images/mailMan/fullSize/ball_scoring_2.JPG', data-lightbox='ball_scoring')
+          img.img-responsive.center-block(src='images/mailMan/ball_scoring_2.JPG')
+        br
+        a(href='images/mailMan/fullSize/ball_scoring_3.JPG', data-lightbox='ball_scoring')
+          img.img-responsive.center-block(src='images/mailMan/ball_scoring_3.JPG')
+    .row
+      .col-md-10.col-md-offset-1
+        h3 Claw
+        p
+          | Our robot has a “claw” mechanism in the front for removing balls from the energy silo. Besides having the opponent 
+          | dump balls onto your side of the field (and in theory they should only be dumping red balls on your side), this is the
+          | only way to get more balls than what you start with on your field. The claw is one of the more ‘hacky’ mechanisms on our robot.
+          | To make it work properly a we needed something stiff enough to firmly stand behind the ball, but flexible enough to bend and
+          | not cause so much friction that the robot would get stuck, we ended up using a piece of cardboard which was taped to the front of it.
+          | It operates by sliding this piece of cardboard behind the ball that rests in the energy silo and then the robot drives in reverse 
+          | to pull the ball out. The robot will then drive forward with the roller on in an attempt to pick up the ball.
+        a(href='images/mailMan/fullSize/claw.JPG', data-lightbox='claw')
+          img.img-responsive.center-block(src='images/mailMan/claw.JPG')
+    
+    .row
+      .col-md-10.col-md-offset-1
+        h2 Code and Strategy
+        p
+          | The software for the robot was written in Java and ran on a Windows 8 tablet. In lieu of writing a novel here, the gist of what
+          | we did will be described below.
+        p
+          | First off realize that our only sensor is a webcam (and technically that photo-gate for ball sorting), so we relied heavily on
+          | computer vision. The webcam and computer vision code detected all of the field objects and calculated the distance and angles
+          | to those objects. That information was then fed into a high level strategy that would do things like prioritize scoring over
+          | collecting balls. The high level strategy would then pass things off to sub-states that would execute the actual maneuvers.
+          | For example one of the actual maneuvers, the scoring routine, had sub-states like centering the reactor in the frame of the webcam,
+          | doing a manhattan distance routine to actually get in front of and perpendicular to the reactor, utilizing a PD controller for
+          | driving to the reactor, and then a few more steps for dispensing balls.
+        p
+          | You can read more about the robot in our 
+          a(href='/paper.pdf') informal paper
+          |  we had to write at the end of the competition.
+
+        p 
+          | Here is a link to the code on 
+          a(href='https://github.com/jpmccabe/maslab_robot') github
+    .row
+      .col-md-10.col-md-offset-1
+        a(href='images/mailMan/fullSize/check.JPG', data-lightbox='check')
+          img.img-responsive.center-block(src='images/mailMan/check.JPG')
+
+  script(type="text/javascript", src="/javascripts/lightbox/lightbox.js")
+
+

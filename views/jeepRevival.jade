@@ -1,0 +1,286 @@
+extends layout
+
+block head
+  title=title
+    
+  <!-- Custom styles for this template -->
+  link(rel="stylesheet", href="/stylesheets/lightbox/lightbox.css")
+  link(rel="stylesheet", href="/stylesheets/projects.css")
+
+
+block content
+  // navigation bar at top of all pages
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    //left title
+    .col-md-2
+      a(href='/')
+        i.fa.fa-arrow-left.fa-2x
+    .col-md-8
+      h1 Jeep Revival
+  <!-- Nav bar end-->
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+
+        h1 Intro
+
+        p 
+          | The goal of this page is to give back to the many individuals that have helped me during my project and to pay it forward to the many more that will
+          | venture out to build a weekend warrior like the one I am working on here. This page will show you several examples of things I have
+          | fixed and upgraded on my heap. Unfortunately, you'd have to read a novel to learn about everything that I have done so I will highlight many of the
+          | larger projects I have undertaken and will keep a more comprehensive list at the end. Each of the items at the end will have links to 
+          | either a write-up or a video explaining what I did, so you can learn and maybe even do what I have. Feel free to skip to the end and take a look
+          | at some of the individual pieces, but if you're a little more patient, scrolling through the page will show you the evolution of the project,
+          | which is pretty cool to see.
+
+        h3 Backstory
+        p
+          | Ever since I was a young kid I wanted a Jeep to rebuild and wrench on and last summer when I drove out from California I had the opportunity 
+          | to get my first car. However, my dad had a different idea and went to the auction and picked up a 
+          a(href='/images/jeepRevival/shittyford.jpg', data-lightbox='ford', alt='') ford explorer. 
+          | It was a pretty nice car frankly, but not the man beast I was looking for . It ended up puttering out and dying on me and my buddies in 
+          a(href="/images/jeepRevival/murdo.jpg", data-lightbox='murdo', alt='') Murdo, South Dakota, 
+          |a.k.a "middle of nowhere". Ford tough, I don't think so. This began my quest for a Jeep, 
+          | something I could always depend on and build into a weekend warrior. So when I got out to Connecticut, where I was staying for the summer,
+          | I began my search and ended up buying this 1999 Cherokee with about 95,000 miles on it. 
+   
+    .row  
+      .col-md-10.col-md-offset-1 
+
+        a(href='/images/jeepRevival/fullSize/jeepStart.jpg', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/jeepStart.jpg')
+
+    .row
+      .col-md-10.col-md-offset-1
+
+        h3 This is going to be a journey. . . .
+
+        p
+          | As soon as I paid the guy and drove away the engine light came on, classic, but got it back to where I was staying and took it to a shop
+          | to figure out what the problem was. 950 dollars later I was out of the shop with a laundry list of things fixed, but mad at how much it cost. This is
+          | when I decided I wouldn't take the Jeep to another shop unless I absolutely needed to. However, it was a complete wreck when I first got it and
+          | in short order started burning way too much money into it. Just. Empty. Every. Pocket. I learned that phrase first hand quickly and unfortunately. But,
+          | once I got it where is was drivable and dependable I started to figure out how I would turn it into the 
+          a(href='/images/jeepRevival/fullSize/dreamJeep.jpg', data-lightbox='dreamjeep', alt='') badass Jeep 
+          | I dreamed of it being. 
+
+    .row
+      .col-md-10.col-md-offset-1
+        h1 Let's start modifying 
+
+        p 
+          | It's very easy to get excited about all the different modications to do to a Jeep, but there was so much I needed to fix before I could start
+          | lifting it and doing bigger modifications that it took me nearly 5 months before I put new suspension on it. I learned pretty quick that since
+          | these vehicles have been around for 30 years that just about any stock part you need is sitting in a junkyard and so I paid several of the
+          | local junkyards weekly visits until I got all of the broken plastics, lights, latches, mirrors and screws I was missing.
+
+        h3 Research
+
+        p 
+          | Research is the most important thing I've learned out of this experience. I'm not a mechanic, and a lame excuse for a knowledgable Jeep addict,
+          | but just about anything someone would ever need to know is on the internet and so I have spent countless hours reading and talking with much more
+          | knowledgable people about products, different set ups and modifications. One of my biggest motivations for all of the research was money. 
+          | I didn't want to have to do anything twice and wanted it done the right way, even if it cost a few more bucks up front. I joined 
+          | a few communities online which have proven invaluable! CherokeeForum.com and a facebook group JeepsOfMass have been the source of tons of
+          | information, parts and new friends. 
+
+        h3 4.5" lift kit
+        p
+          | I purchased a 4.5" short arm lift kit from Rubicon Express just after the summer, but didn't have my of the tools or a place to install it.
+          | Despite working on the Jeep on the street in front of my house, that wasn't much of an option when it was 30 degrees outside, but thankfully
+          | I found a guy who was willing to help me out. It took a couple of weekends to install the kit because many of the bolts were seized in place
+          | and had to be cut out, nonetheless we got it it done. It looks so much meaner with the 33" tires and black rims! I picked up the tires and rims
+          | for $250, imagine that. 
+        
+        h3 Back lift Install
+
+        p
+          | After we worked about 8 hours to get the back done, we had to call it, both of us were exhausted and frustrated at how difficult it was to do
+          | anything because of how rusted together everything was. I took the back driveshaft off drove it in front wheel drive like a dragster. The
+          | looks I got were comical.
+         br
+
+        .video-container
+          iframe(width='640', height='360', src='https://www.youtube.com/embed/6oXX9xDZHCw', frameborder='0', allowfullscreen='')
+        br
+        a(href='/images/jeepRevival/fullSize/backAxleLift.jpg', data-lightbox='lift', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/backAxleLift.jpg')
+        br
+
+        a(href='/images/jeepRevival/fullSize/finishedBackAxle.jpg', data-lightbox='lift', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/finishedBackAxle.jpg')
+        
+        
+        h3 Front Lift Install 
+        p
+          | After another marathon session we got the front done. The upper control arms had to be cut and bolts pressed out, thankfully John had an enormous C clamp
+          | otherwise we would've been in trouble. I again had to drive it home in front wheel drive because we didn't get the SYE put in the transfer case and 
+          | it was vibrating hard over 25 mph, but fortunately got the new wheels and tires on. With the tinted windows, removed side rubber, lift, and new wheels
+          | this looks like a completely different cherokee.
+        br
+        .video-container
+          iframe(width='640', height='360', src='https://www.youtube.com/embed/Ced4vvvso-w', frameborder='0', allowfullscreen='')
+        br
+        a(href='/images/jeepRevival/fullSize/finishedLift.jpg', data-lightbox='lift', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/finishedLift.jpg')
+        
+        h3.text-center SYE driveshaft NP231 install
+        .video-container
+          iframe(width='640', height='360', src='https://www.youtube.com/embed/uP-SssHfZ2U', frameborder='0', allowfullscreen='')
+        br
+        h1 First trails
+        p
+          | Took the Jeep through some really soft ground, due to all the snow melting, and ended up giving the jeep a nice mud coating. Later on in the day I got 
+          | it stuck in some snow trying to get a friend unstuck. After a couple of hours we got him out with the help of about 5 other people, but I had fun, even though
+          | we were scratching our heads for a while trying to figure out how to get him out. Successful first trip, but I need recovery gear for sure!
+
+        a(href='/images/jeepRevival/fullSize/firstOffroading.jpg', data-lightbox='offroad', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/firstOffroading.jpg')
+        br
+        a(href='/images/jeepRevival/fullSize/muddyPic1.jpg', data-lightbox='offroad', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/muddyPic1.jpg')
+        br
+        a(href='/images/jeepRevival/fullSize/muddyPic2.jpg', data-lightbox='offroad', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/muddyPic2.jpg')
+        br
+        h1 Tires
+
+        p
+          | Remember those tires and rims I picked up for $250, well they had some pretty bad rock rash on them and were godawful in the snow and since it was in 
+          | the middle of winter I didn't want to take the Jeep anywhere. Well, I decided that since they didn't have a whole lot of life in them I'd be better off
+          | putting new rubber on now and staying safe on the roads. After doing a whole bunch of research, I picked up a set of Goodyear 33" Duratracs, beautiful
+          | tire, an aggressive all-terrain that is also pretty good on noise and sticks on ice and snow phenomenally. 
+
+
+         a(href='/images/jeepRevival/fullSize/newTires.jpg', data-lightbox='offroad', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/newTires.jpg')
+        
+        br
+        h1 Front Bumper
+
+        p
+          | As the semester trudged on I wanted to take my jeep out more and more, but know that I needed a winch if I ever wanted to go out by myself, I don't have
+          | friends at school with offroad trucks. But eventually decided that not only would a heavy duty rock crawling bumper look awesome, but would be necessary
+          | for that winch when I got one. So at the end of the semester I called up JCR Offroad and ordered their Vanguard PreRunner for the Cherokee. It took 5
+          | weeks to get, but looks badass!
+
+        p
+          | It came without a powdercoat so I primed it up and coated it with Rustoleum fine textured black. It also came with a unibody tie-in kit because the Cherokee
+          | is made with a bunch of sheet metal and the front end needed some reinforcing. Took me a while to get it painted and mounted up myself, 
+          | but it looks great! Now, I'm in the hunt for a winch to mount on the steel chariot.
+
+        a(href='/images/jeepRevival/fullSize/bareSteelBumper.jpg', data-lightbox='offroad', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/bareSteelBumper.jpg')
+        br
+        a(href='/images/jeepRevival/fullSize/newBumper.jpg', data-lightbox='offroad', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/newBumper.jpg')
+        br
+        a(href='/images/jeepRevival/fullSize/greenTowHooks.jpg', data-lightbox='offroad', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/greenTowHooks.jpg')
+
+        br
+        h1 Upgrading Injectors
+
+        p
+          | Chrysler ended up putting a low grade injector into the Cherokees which only had one spray port. This hurt the throttle response as the spray is 
+          | much thicker than it should be and takes longer to ignite. I bought some ultrasonically cleaned 703 four port injectors and threw them in my Jeep.
+          | It was a bit of a pain to get everything cleaned out, but the throttle response improvement is amazing and love them! One of the best performance
+          | mod's I've done so far. Here is a picture and a video of what I'm talking about.
+
+
+        h3 Fuel Rail
+        a(href='/images/jeepRevival/fullSize/injectors.jpg', data-lightbox='offroad', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/injectors.jpg')
+        br
+        .video-container
+          iframe(width='640', height='360', src='https://www.youtube.com/embed/bcMJVpzLapw', frameborder='0', allowfullscreen='')
+
+
+        h1 Paint 
+
+        p
+          | I'd love to paint my Cherokee this 
+          a(href='/images/jeepRevival/fullSize/tanCherokee.jpg', data-lightbox='tan') color,
+          | but frankly paint is expensive and there are so many more things on the list to do that are higher priorities;
+          | however, I had a little fun and made it a nice two tone, with a black strip on the bottom. In the process of taking the back plastic and fenders off I found
+          | some bad rust. I'm going to see if I can't cut off a good piece from a junkyard and weld it in there, but repairing that is going to be a nasty job. I
+          | left that for another day and took a wire brush and ground off as much of the rust on the doors as I could, but the front one is bad and will need
+          | replacing at some point, but otherwise I think the paint looks great!
+
+
+        a(href='/images/jeepRevival/fullSize/rustyBackQuarter.jpg', data-lightbox='offroad', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/rustyBackQuarter.jpg')
+        br
+        a(href='/images/jeepRevival/fullSize/rustyDoors.jpg', data-lightbox='offroad', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/rustyDoors.jpg')
+        br
+        a(href='/images/jeepRevival/fullSize/twoTone.jpg', data-lightbox='offroad', alt='')
+          img.img-responsive.center-block(src='/images/jeepRevival/twoTone.jpg')
+        br
+          
+    .row
+      .col-md-5.col-md-offset-1
+        h1 Fixes Completed
+
+        ul
+          li 
+            a(href='https://www.youtube.com/watch?v=dof5b-ahprQ', target='blank') Brakepads/Rotors
+          li 
+            a(href='https://www.youtube.com/watch?v=OT5-aPi1FcU', target='blank') Rear Brakes
+          li 
+            a(href='https://www.youtube.com/watch?v=dcL_0TWeZJY', target='blank') Cleaned Heater Core
+          li 
+            a(href='http://www.naxja.org/forum/showthread.php?t=1067508', target='blank') Hood Latch Mechanism
+          li 
+            a(href='https://www.youtube.com/watch?v=pMDaU3seKH8', target='blank') Interior head Liner
+          li Rear Hatch Shocks
+          li 
+            a(href='https://www.youtube.com/watch?v=9Wc2fxPNi9A', target='blank') Rear Hatch Lock mechanism
+          li 
+            a(href='https://www.youtube.com/watch?v=diW-NPz0-60', target='blank') Driver side door wiring
+          li 
+            a(href='https://www.youtube.com/watch?v=aE9aNHFehqw', target='blank') Front U-joints
+          li 
+            a(href='https://www.youtube.com/watch?v=5C5nxQunOks', target='blank') Driver side Hub Replaced
+          li 
+            a(href='https://www.youtube.com/watch?v=qtXQvVNg6vI', target='blank') Steering box tightened
+          li Various Broken Interior plastics
+          li Cigarette lighter electrical
+          li 
+            a(href='https://www.youtube.com/watch?v=g6jMgxvQOxY', target='blank') Driver side door window worm gear
+
+      .col-md-5
+        h1 Upgrades Completed
+        ul
+          li 
+            a(href='/images/liftinstall.pdf') 4.5" Rubicon Express Short Arm Lift
+          li Rubicon Express/Bilstein Shocks
+          li SYE Driveshaft
+          li Extended Rear Driveshaft
+          li ZJ Steering
+
+          li 33" Goodyear Duratracs
+          li 
+            a(href='http://www.jcroffroad.com/install_guides/XJFrontBumper.pdf') JCR Front Bumper & Unibody Tie-in 
+          li Cragar D Window Simulated BeadLock rims
+          li 
+            a(href='https://www.youtube.com/watch?v=IY0ZVnwXOFo', target='blank') H4 Conversion Headlights & Wire Harness
+          li 
+            a(href='https://www.youtube.com/watch?v=i6CGbQwqQNo', target='blank') 4 Port injectors
+          li Interior LED Lighting
+          li Heated mirrors
+          li 
+            a(href='/images/fenderInstall.pdf') Buschwacker Flat Fender Flares
+          li 
+            a(href='https://www.youtube.com/watch?v=Z4dv0DPosiQ', target='blank') Solid HD Front & rear Differential Covers 
+          li 
+            a(href='https://www.youtube.com/watch?v=fwi2g40ymL0') ZJ Rear Brake Disc Conversion
+          li 
+            a(href='https://www.youtube.com/watch?v=7Hd7MepJn-E') 3/4" Coil Spacer leveling Kit
+          li Husty Floor Liners
+
+
+
+
+
+  script(type="text/javascript", src="/javascripts/lightbox/lightbox.js")

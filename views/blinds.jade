@@ -1,0 +1,76 @@
+extends layout
+
+block head
+  title=title
+    
+  <!-- Custom styles for this template -->
+  link(rel="stylesheet", href="/stylesheets/lightbox/lightbox.css")
+  link(rel="stylesheet", href="/stylesheets/projects.css")
+
+
+block content
+  // navigation bar at top of all pages
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    //left title
+    .col-md-2
+      a(href='/')
+        i.fa.fa-arrow-left.fa-2x
+    .col-md-8
+      h1 Automated Blinds
+  <!-- Nav bar end-->
+
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        h1 Intro
+
+        p
+          | So maybe this wasn't the best use of my time, but back in the fall of 2015 I lived in a single in PBE at MIT and found myself constantly moving the blinds up and down. They were difficult to move and found myself generally not enjoying taking the 30 seconds it took twice a day to change their position. So I decided to automate them and built myself a little motor assembly that could move the blinds at the touch of a button. Here is what I came up with.
+
+    .row
+      .col-md-10.col-md-offset-1
+       
+        h3.text-center 
+        .video-container
+          iframe(width='640', height='360', src='https://youtube.com/embed/5K0HXwDcYWc', frameborder='0', allowfullscreen='')
+
+        h3 Design
+        p
+          | This project consisted of a few parts, 3D printed parts, a little soldering, and a short script to turn the motor. 
+
+        h4 3D printed parts
+        p
+          | I've done a bit of CAD work so I thought it would be fun to 3D print a mount and gear to connect the motor to the chain drive of the blinds. The chain that was used to move the blinds up and down was beaded, which allowed me to build a sprocket to drive the chain. I went through a couple of different designs before I got to good fit on the chain and it was robust enough to not allow the chain to fall off. The final version of it is what is seen in the video; however the screws were ground down afterward this video was taken. The gear is attached to an injection molded piece that directly pairs with the motor since I couldn't get the accuracy necessary to print a part that would fit properly to the motor, which was why the screws are present in the piece. 
+
+        p
+          | I 3D printed a base for the mount that placed the sprocket at a postion that would provide enough tension in the chain to keep it taut, but not overstrain the motor. The inside of the mount is hollow, which holds the battery and electronics that it runs off of. It also has 4 vertical holes to allow the mount to be screwed into the sill (I don't think my landlord was going to be too happy about that....), but that was a reasonable solution for me, knowing that I would need to replace the battery from time to time. 
+
+        h4 Soldering/Code
+
+        p
+          | Here is a picture of the little board I soldered together to connect the button to the arduino. It's a mess, I recognize that, but it works and thats all I cared about at the time.
+    .row
+      .col-md-10.col-md-offset-1
+        a(href='/images/blinds/circuit.png', data-lightbox='first', alt='')
+          img.img-responsive.center-block(src='/images/blinds/circuit.png', width='640', height='360')
+        
+        br
+        p
+          | You can check out the short little script that does moves the motor. I used time to specify how far to move the motor as I did not have an encoder. I know that the distance would change at the battery voltage shifted, but I put a level shifter in between the battery and the motor, so that this problem would no longer exist. I also created a state so that every time I hit the button, the assembly would know which way to turn the motor. The code is on github 
+          a(href='https://github.com/GGunnison/blinds/blob/master/blinds.ino', target='blank')|here. 
+
+        h3 Summary
+
+        p
+          | Unfortunately, as I finished the project, my house did a housing lottery and I didn't end up staying in the room I made it for and the guy who went into the room did not care to have it. However, I did have it mounted for a few days and it was a fun little trick to have, but frankly a little more ridiculous than anything. My new room didn't not have the same set of blinds and so I threw it on the shelf after I moved. I thought it was a fun little project though and enjoyed building something outside of class that was at least a little more pertinent to what I'm studying than most of the projects I end up working on i.e. the jeep, or construction stuff.
+
+        h4 Things I learned 
+
+        p
+           | If you don't put a watchdog timer on the arduino, it will kill the battery it short order.
+
+        p
+          | 3D printers accuracy is not the best, unless they're fairly expensive and the plastic is not as strong as you might think.
+
+
+  script(type="text/javascript", src="/javascripts/lightbox/lightbox.js")

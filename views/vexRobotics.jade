@@ -1,0 +1,247 @@
+extends layout
+
+block head
+  title=title
+    
+  <!-- Custom styles for this template -->
+  link(rel="stylesheet", href="/stylesheets/lightbox/lightbox.css")
+  link(rel="stylesheet", href="/stylesheets/projects.css")
+
+
+block content
+  // navigation bar at top of all pages
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    //left title
+    .col-md-2
+      #nav_arrow
+        a(href='/')
+          i.fa.fa-arrow-left.fa-2x
+    .col-md-8
+      h1 Vex Robotics
+  <!-- Nav bar end-->
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        h1 Intro
+
+        p
+          | In high school I took two years of Advanced Engineering, which concentrated on Vex Robotics Competitions. The first year I took the class,
+          | which was also the first year it was offered, I was on a team of 7 guys and had a ton of fun, but we ultimately did not do well. The next year however,
+          | the class had more resources and I was much more successful, placing in several competitions, winning one, and having the opportunity to go to the world
+          | competition. This class is where I decidedly found my love for Engineering and eventually went on to MIT when I was given the opportunity. 
+
+        p
+          | The first year I competed, the program had just started and the school had purchased basic starter packs
+          | and allowed us to build robots from them. While we did out best, our lack of parts and time severely limited our capability in the competitions.
+          | You can see our team in the picture below and in the video below what we were able to accomplish with our robot.
+        a(href='images/vexRobotics/fullSize/firstRobot.jpg', data-lightbox='robot')
+          img.img-responsive.center-block(src='/images/vexRobotics/firstRobot.jpg', style='height:400px;  width:600px')
+        br
+        .video-container
+          iframe(width='640', height='360', src='https://www.youtube.com/embed/kjLeYq45du4', frameborder='0', allowfullscreen='')
+        br
+        p
+          | The second year I competed in the Vex Competitions, my school had invested quite a bit more money into the program and we were ready to compete
+          | in the new game that Vex had created, Gateway. Instead of trying to explain it, take a look at the video below, it does a great job of explaining
+          | the general premiss of the game. 
+
+        .video-container
+          iframe(width='640', height='360', src='https://www.youtube.com/embed/taf44kEtyrU', frameborder='0', allowfullscreen='')
+        br
+        p
+          | By taking the class a second year I was able to work alone on a robot. This allowed me to work more flexibly and spend much more time working
+          | at home without having to sync up with people on a regular basis. I got to work quickly by coming up with several different design ideas, listing 
+          | out the pros and cons of each, and testing a few smaller modules to get a feel for how they worked. After a couple of weeks of looking at past
+          | designs and testing my own ideas out I came to what became 
+          a(href='/images/vexRobotics/robot.jpg', data-lightbox='robot') my final design. 
+    
+    .row
+      .col-md-10.col-md-offset-1
+        h1 Robot Build
+
+        p 
+          | Once I had visualized my design, I took off building right away. While working by myself offered extreme flexibility, it held me back in the long
+          | run because I wasn't able to put in the hours needed to work out all the bugs; however, all things considered I did well. I will walk you through
+          | the build process that I went through and some of the successes and milestones that I achieved throughout the year. 
+
+        p
+          | On day one I built out the list of components that needed to be built:
+
+        ul
+          li Drivetrain
+          li Lift
+          li Gripper
+          li Driver Control Program
+          li Autonomous Program 
+
+        h3 Drivetrain
+
+        p
+          | The first iteration of the drivetrain consisted of 4 high torque motors that were directly connected to the wheels. This gave the robot a ton of torque
+          | on the floor and a solid base with 6 omniwheels. The base was made to be as reasonably large as possible to make it sturdy for the lift that I planned
+          | to add to it later. The omniwheels allowed for increased manuevering on the floor as the standard wheels would cause the robot to shake as it turned 
+          | because all the wheels were driving at the same rate and could not slide on the floor. 
+        img.img-responsive.center-block(src='/images/vexRobotics/fullSize/drivetrain.jpg', style='height:400px;  width:500px')
+        br
+        p
+          | However, this drivetrain was signifcantly changed later on due to unforseen challenges and in the end had much better performance. 
+          | The final version of the drivetrain drove the 4 corner wheels instead of the back 4. The purpose of this was to move the axis of rotation to the
+          | center of the robot to aid in drivability. This was also done due to a need for more speed on the field, but instead of directly connecting the motors 
+          | to the wheels, a chain link system was designed and built. The need for a chain system came from a spacial and physical power constraint. The robot was
+          | only allowed to use a maxiumum of 10 motors and only 4 of those could be high torque. I ended up using all 4 of the high torque motors on
+          | the drivetrain after trying out different combinations between the lift and drive train. Using the high torque motors on the bottom gave it a 60% boost
+          | in torque and allowed me to gear the wheels 2:1, which provided a 100% boost in speed on the field and allowed me to use the remaining 6 motors for the
+          | lift. This upgrade made the robot one of the fastest on the field and with additional prgramming and lift upgrades, one of the most effective at scoring
+          | as well. The next couple of pictures show part of the process of tearing down and upgrading to the chain drive.
+        a(href='images/vexRobotics/fullSize/buildingChainDrive.jpg', data-lightbox='robot')
+          img.img-responsive.center-block(src='/images/vexRobotics/fullSize/buildingChainDrive.jpg', style='height:400px;  width:500px')
+        br
+        a(href='images/vexRobotics/fullSize/chainDrive.jpg', data-lightbox='robot')
+          img.img-responsive.center-block(src='/images/vexRobotics/fullSize/chainDrive.jpg', style='height:400px;  width:500px')
+        br
+
+
+        h3 Lift
+
+        p
+          | This was by far the most difficult part of the robot to build excellently. I went through several different motor, linkage, and slider designs trying to 
+          | figure out how move the lift at all and eventually in the most optimal way. Here are a few pictures of beginning iterations. The lift works by 
+          | driving a chain, that is fixed on both ends to the top stage of the lift, through motors, creating a loop that is woven in between each stage of the lift,
+          | bottom to top. As the motors pull the chain through, an upward force is generated on the bottom of each stage and the lift moves upwards. Unfortunately, I
+          | did not take more detailed photos at the time, but this will give you a general idea of how I set it up. 
+
+        a(href='images/vexRobotics/fullSize/firstTower.jpg', data-lightbox='robot')
+          img.img-responsive.center-block(src='/images/vexRobotics/firstTower.jpg', style='height:400px;  width:500px')
+        br
+        a(href='images/vexRobotics/fullSize/robotGears.jpg', data-lightbox='robot')
+          img.img-responsive.center-block(src='/images/vexRobotics/robotGears.jpg', style='height:625px; width:500px')
+        br
+        a(href='images/vexRobotics/fullSize/robotLift.jpg', data-lightbox='robot')
+          img.img-responsive.center-block(src='/images/vexRobotics/robotLift.jpg', style='height:625px; width:500px')
+        br
+        p
+          | The most optimzed verion of the lift actually exchanged the steel panels for aluminum ones because it wasn't able to get enough torque to lift the
+          | weight of the steel plus game objects in a reasonable amount of time. The final lift used 6 motors and could be geared so that it would lift it; however it would take more 
+          | than 5 seconds to lift a game object to the top goal, which was prohibitably time expensive. But by switching to aluminum and lubricating the rails I was
+          | able to lift multiple game objects to the top within 2 seconds! This was a pheonomial improvement over the previous version and came just in time for a
+          | competition. During that competition I was averaging over 20 points per game alone whereas the tournament before I was lucky to score any more than 10. 
+
+        h3 Gripper
+
+        p
+          | I developed a pnuematic claw to grip objects on the field. The claw had a pnuematic piston attached to each arm which would extend several inches to 
+          | close the arm. The pnuematics were powered through an air tank, underneath the robot and two solenoids. The air tank had enough pressure for about 25 
+          | cycles, which was just enough for a match as I averaged around 18-20 cycles per match. One of the first problems I ran into was that each piston 
+          | only output around 7-10 lbs. of pressure which was not enough pressure to hold the weight of multiple game objects at once. This was due to the metal
+          | and plastic surfaces being rather slick. To increase the coefficient of friction, I attached some tacky rubber matting to the inside of the claw which
+          | created enough friction to hold multiple game objects at once. 
+
+        br
+        a(href='images/vexRobotics/fullSize/wholeGripper.jpg', data-lightbox='robot')
+          img.img-responsive.center-block(src='images/vexRobotics/wholeGripper.jpg', style='height:400px; width:500px')
+        br
+     
+        p.center
+          | The chain used to raise the lift is attached at the bottom of the center plate in the picture below. 
+
+        br
+        a(href='images/vexRobotics/fullSize/gripperClose.jpg', data-lightbox='robot')
+          img.img-responsive.center-block(src='images/vexRobotics/gripperClose.jpg', style='height:500px; width:400px')
+        br
+        p
+          | As seen in the picture below, the pnuematics were attached to the top of the claw. Due to spacial constraints, they had to be mounted on top, but would
+          | have gripped the cylindrical objects better if they had been mounted more in the middle or on the bottom of the claw because the metal was not completely
+          | rigid, but reagardless they worked well and didn't have a problem as designed. The tubing and electrical for the solenoids was run off of the side in one
+          | thick cord, but is not pictured here.
+        
+        a(href='images/vexRobotics/fullSize/pnuematics.jpg', data-lightbox='robot')
+          img.img-responsive.center-block(src='images/vexRobotics/pnuematics.jpg', style='height:500px; width:500px')
+        br
+        a(href='/images/vexRobotics/fullSize/robot.jpg', data-lightbox='robot')
+          img.img-responsive.center-block(src='/images/vexRobotics/robot.jpg')
+
+        h3 Programming
+
+        p
+          | Working on this project was the first time I had any exposure to writing software and therefore struggled to make things work. I did not
+          | understand hardly anything much less threading a program, which I eventually needed to do to make my driver control program work properly. This is where
+          | my robot suffered the most and cost me several matches. However, it was not that I wasn't incapable of coding stuff, but rather that I had not dedicated
+          | enough time to writing the software that I needed to be effective during the Autonomous portion of the match and did not have a full size competition 
+          | field to test on. Fortunately, Vex provided a software SDK called 
+          a(href='/images/vexRobotics/fullSize/easyC.jpg', data-lightbox='robot') EasyC
+          | , which allowed me to drag and drop different functions in a graphical interface
+          | and did not require me to write in C, which made the whole experience much easier, but I still was not able to get as far as I wish I could have. Several
+          | times I actually compromised the robot during the Autonomous portion of the match which left the robot useless during the driver control portion, 
+          | ultimately costing me matches. However, all things considered I did write a couple very helpful programs, most notably the driver control and Autonomous
+          | programs.
+
+
+        br
+        h4 Driver Control Program
+
+        p
+          | Manuevering the lift, claw and driving the robot at the same time became a tricky proposition after I had physically built it all. In the first couple of
+          | matches I was hardly hindered by the physical robot and mostly held back by the inability to control and manuever the game objects around the field. This
+          | led me to adding a couple of different sensors to the robot and writing some software to make it much easier to make the robot do what I intended it to.
+          | The first bit I added was an optical encoder and a bump sensor to control the lift. There were 4 different positions that the lift could be at during the
+          | match and manually attempting to get the lift in the right position was extremely ineffecient, so I made a subroutine to move the lift to different heights,
+          | which corresponded to a button selection on my controller. The next bit I changed was the way to control the claw. Before I had done anything, the solenoids only
+          | opened and closed long enough to fill or empty the pnuematics, but would not stay open, which meant that in order to hold the
+          | claw closed I had to hold the button down. So I wrote another subroutine to maintain the pressure in the solenoid after one click of a button. The last bit
+          | that I changed was moving the drivetrain control to tank drive and used two joy sticks instead of one to manuever the robot. These three changes gave me
+          | significantly better handling and increased my effectiveness on the field. With a few other hardware optimizations and these subroutines I went from 
+          | scoring around 9-10 points per match to close to 20 per match. 
+
+        p
+          | One thing that I did not realized at first was that upon entering one of the subroutines that I built, I would lose the ability to control the robot and 
+          | move other parts of it while the subroutine ran. But of course I wanted to move the robot while the lift was going up and down, so I had to build two 
+          | threads in the code, which allowed me to manuever the three parts, drivetrain, lift, and claw independently of each other. I found this pretty interesting
+          | and didn't learn more thoroughly about threading until I came to MIT.
+
+        br
+        h4 Autonomous Program
+
+        p
+          | The first 20 seconds of the match consists of an autonomous portion where robots are allowed to use two preloaded game objects and manuever the field
+          | to score points. I wrote a short program that allowed me to score 5 points during this period. It was difficult for me to program the routine because I did 
+          | not have a 
+          a(href='images/vexRobotics/fullSize/GatewayField.png', data-lightbox='robot') game field 
+          | available to me. I set up a field in my 
+          a(href='images/vexRobotics/fullSize/garageField.jpg', data-lightbox='robot') garage 
+          | out of tape to measure distances and figure out how to do line following. But without a 
+          | proper field it became nearly impossible to calibrate everything properly. The foam matting that the real field used absorbed energy from the wheels and all of
+          | distances I had calculated ended up being wrong, despite using an optical encoder. Also the contrast between the white taped lines and the grey foam was integral
+          | to making the line followers work and I didn't have that to practice with, which made everything more difficult. So what I ended up doing was programming during
+          | competitions so that I could calibrate all of the distances and angles properly. Unfortunately, this did not provide me with enough time to write much of a program
+          | and I only utilized about half of the Autonomous period to score points; however that 5 points became huge for me and I ended up being able to score around 23
+          | points myself per round. With a good partner, some of my matches ended up being fairly lopsided, one was 46-3.
+
+
+    .row
+      .col-md-10.col-md-offset-1
+        h1 Results
+
+        p
+          | By the time the competition season was over I had participated in 5 different competitions, 3 in California, 1 in Las Vegas, NV and one in Tucson, AZ.
+          | I won one outright and won the best build award at another. At each competition, the top 2 robots were given an invitation to the World Championships, but 
+          | the first competition that I won did not give me an invitation because I had not participated in enough weekends of the tournament (It was 5 weeks long),
+          | despite besting just about every robot at the competition. I finished two weekends with a record of 14-3.
+        br
+        a(href='/images/vexRobotics/fullSize/score.jpg', data-lightbox='robot')
+          img.img-responsive.center-block(src='/images/vexRobotics/score.jpg')
+        br
+        p
+          | I didn't get the invitation from that competition and since that was the last one in California for the season I started to venture out to others and
+          | eventually made it out to Las Vegas, NV and Tucson, AZ to compete. I won in Tucson, AZ and was given an invitation to the championship which happened to
+          | be in my hometown Anaheim, CA that year. However, I had prom and MIT's Campus Preview Weekend during the same weekend and so I didn't end up going to the
+          | championship anyways. But because I had such a successful year, the school program expanded significantly and they ended up hosting a competition the year
+          | after and have since had quite a bit of success through the Vex Competitions.
+        
+        br
+        a(href='/images/vexRobotics/fullSize/robotAwards.jpg', data-lightbox='robot')  
+          img.img-responsive.center-block(src='/images/vexRobotics/robotAwards.jpg')
+
+        
+
+
+  script(type="text/javascript", src="/javascripts/lightbox/lightbox.js")

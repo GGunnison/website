@@ -1,0 +1,243 @@
+
+extends layout
+
+block head
+
+  link(rel="stylesheet", href="/stylesheets/style.css")
+  link(rel="stylesheet", href="/stylesheets/lightbox/lightbox.css")
+  script(type='text/javascript', src='/javascripts/landingController.js')
+
+  script.
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-67205334-1', 'auto');
+      ga('send', 'pageview');
+
+
+
+
+block content
+
+  .container
+    img.img-circle.profile(src='/images/bio/me.jpg')
+    .name Grant Gunnison
+    #bio.hidden
+      p
+      | Grad Student at MIT
+      br
+      | Research Laboratory of Electronics at MIT
+      br
+      | Previously at SpaceX, AQR, Bank of America & Bridgewater Associates
+
+      .row.limit
+        a(href="https://www.facebook.com/grant.gunnison", target="blank")
+          i.fa.fa-facebook.fa-4x
+
+        a(href="https://www.linkedin.com/pub/grant-gunnison/90/146/b8", target='blank')
+          i.fa.fa-linkedin.fa-4x
+
+        a(href='https://github.com/ggunnison', target='blank')
+          i.fa.fa-github.fa-4x
+        
+        a(href='/Grant Gunnison Resume.pdf', target='blank')
+          i.fa.fa-file-text-o.fa-4x
+    .row.limit
+      ul
+        li.listing(id='bio-label') Bio
+        li.listing(id='projects-label') Projects
+
+    #projects.hidden
+      br
+      .row
+        .col-lg-6.col-md-6
+          a(href='/ledCube')
+            img.img-responsive.img-rounded(src='/images/ledCube/cube1.png', alt='', target='blank')
+
+        .col-lg-6.col-md-6
+          h2 8x8x8 LED Cube
+          h4 Spring 2016
+
+          p
+            | Two years ago, I saw one of these on the internet and thought it was the coolest thing. Last semester, I finally learned how to use a microcontroller and design embedded systems so I decided to make one! This is not a finished product yet, but the basic functionality is there. I have some big plans for this cube, in additiona to being a slick display it is also going to double as a 2 person 3D snake game using joy sticks. Take a look here and you can track the progess of the current state of the project.
+            
+          br
+          a(href='/LedCube')
+            h4 Read More
+      br
+      .row
+        .col-lg-6.col-md-6
+          a(href='/unstableSystems')
+            img.img-responsive.img-rounded(src='/images/unstableSystems/unstableSystems.png', alt='', target='blank')
+
+        .col-lg-6.col-md-6
+          h2 Unstable systems
+          h4 Spring 2016
+
+          p 
+            | I recently took a controls course that focused on stabilizing several different types of systems. Here I will walk through a lab we did to stabilize a weighted magnet in free space as well as our midterm project which was to make a self balacing two wheeled robot! I found both of these projects fun and certainly challenging and I hope you do as well!
+            
+            
+          br
+          a(href='/unstableSystems')
+            h4 Read More
+      br
+      .row
+        .col-lg-6.col-md-6
+          a(href='/blinds')
+            img.img-responsive.img-rounded(src='/images/blinds/blinds.png', alt='', target='blank')
+
+        .col-lg-6.col-md-6
+          h2 Automated blinds
+          h4 January 2016
+
+          p
+            | A simple project that I wanted to do since I had an extra arduino and a couple of motors laying around. The blinds I had in my room were consistently frusturating to move up and down and so I built a little motor assembly to do it for me at the touch of a button. 
+            
+            
+          br
+          a(href='/blinds')
+            h4 Read More
+
+      br
+      .row
+        .col-lg-6.col-md-6
+          a(href='/converter')
+            img.img-responsive.img-rounded(src='/images/converter/AC.jpg', alt='', target='blank')
+
+        .col-lg-6.col-md-6
+          h2 DC/AC Converter
+          h4 November 2015
+
+          p
+            | My final project for 6.131, Power Electronics Lab, was to build a DC/AC converter. The original motivation was to build one so that I could run a compressor off of my car battery, but our lab only allowed me to use 90W of power, so I ended up building one at a signficantly reduced power output. Nonetheless I learned quite a bit about the DC/AC topolgies and schemes used to convert power between DC and AC. On this page I will walk through the different designs that I built, what I learned, as well as some of the hardware I ended up with.
+            
+            
+          br
+          a(href='/converter')
+            h4 Read More
+      br
+      .row
+        .col-lg-6.col-md-6
+          a(href='/houseBuild')
+            img.img-responsive.img-rounded(src='/images/houseBuild/preview.jpg', alt='', target='blank')
+
+        .col-lg-6.col-md-6
+          h2 Mexico House Build
+          h4 August 2015
+
+          p
+            | While this was the first year for me to take part, this was the 13th house build that my family has been a part of. During the first week
+            | in August a team ranging from 25-60 travel down to La Mision, Mexico to build a house for a family that does not have one. This year our
+            | team, which comes from Yorba Linda Friends Church, had the wonderful opportunity to build a home for the Heranandez family. A family of 6,
+            | whom had almost nothing, had a house started and built for them over the course of 3 1/2 days, a life changing experience. Before going down,
+            | I had always wanted to see the construction madness for myself, so I made a video so you could see it too. Take a look!
+            
+          br
+          a(href='/houseBuild')
+            h4 Read More
+      br
+      .row
+        .col-lg-6.col-md-6
+          a(href='/djBooth')
+            img.img-responsive.img-rounded(src='/images/djBooth/preview.jpg', alt='', target='blank')
+
+        .col-lg-6.col-md-6
+          h2 DJ Booth
+          h4 August 2014
+
+          p
+            | After moving into a beautifully rebuilt fraternity my sophomore year, with one of the most breathtaking views 
+            | of boston, Jacob Tims and I built a DJ booth for some of Boston's and NYC's finest DJ's to spin on. Not only was it crafted with beautifully
+            | stained pine, but also sports sound responsive LED's which helps in making some of the best rooftop events that Cambridge has ever seen.
+            | With a short deadline and a few all night work sessions we finished the morning of our party. 
+            
+          br
+          a(href='/djBooth')
+            h4 Read More
+      br
+      .row
+        .col-lg-6.col-md-6
+          a(href='/jeepRevival')
+            img.img-responsive.img-rounded(src='/images/jeepRevival/preview.jpg', alt='', target='blank')
+
+        .col-lg-6.col-md-6
+          h2 Jeep Revival
+          h4 June 2014
+
+          p 
+            | I should start by saying that you are not looking at a “Pajama party Barbie Jeep” and if you my friend are into that type of thing, just 
+            | move along. The short description of the beast before you is two words “MEAT & POTATOES”. This is the All American chariot of the 
+            | free world. My pride and joy. My favorite girl, sorry Jess. This thing is a piece of red white and blue Americana Machinery and is pumping 
+            | 4.0 liters of uncensored raw fuel through her straight six nuclear power plant. This is a war wagon revival, my rebuild, 12 months running 
+            | strong. 
+            
+          br
+          a(href='/jeepRevival')
+            h4 Read More
+      
+      br
+      .row
+        .col-lg-6.col-md-6
+          a(href='/mailMan')
+            img.img-responsive.img-rounded(src='/images/mailMan/preview.jpg', alt='', target='blank')
+
+        .col-lg-6.col-md-6
+          h2 The Mailman
+          h4 January 2014
+
+          p
+            | In January of 2014 I, Patrick McCabe, and John William competed in the Mobile Autonomous Robotics Laboratory (MASLAB) robotics
+            | competition at MIT, a month long competition to build a robot from scratch that finishes in a single-elimination 
+            | tournament. 17 teams competed, which ranged from about 3-5 members. To make a very long, tiring, and stressful story short, we
+            | ended up coming in 1st place in the tournament.
+          br
+          a(href='/mailMan')
+            h4 Read More
+       br
+      .row
+        .col-lg-6.col-md-6
+          a(href='/phoneDock')
+            img.img-responsive.img-rounded(src='/images/iPhoneDock/preview.jpg', alt='', target='blank')
+
+        .col-lg-6.col-md-6
+          h2 iPhone Dock
+          h4 July 2013
+
+          p
+            | In the summer of 2013 I was given an opportunity to go to Singapore and work in a quadracoptor lab at the Singapore University of Technology 
+            | and Design, through an MIT program called MISTI. I took up the opportunity and spent 10 weeks in Singapore after my freshmen year at MIT. At
+            | that point, I didn't know what I wanted to major in and study so while I was in Singapore I worked on several different projects one of which
+            | was an iPhone Dock.
+          br
+          a(href='/phoneDock')
+            h4 Read More
+      br
+      .row
+        .col-lg-6.col-md-6
+          a(href='/vexRobotics')
+            img.img-responsive.img-rounded(src='/images/vexRobotics/preview.jpg', alt='', target='blank')
+
+        .col-lg-6.col-md-6
+          h2 Vex Robotics
+          h4 2011-2012
+
+          p
+            | In high school I took two years of a Advanced Engineering, which concentrated on Vex Robotics Competitions. The first year I took the class,
+            | the first year it was offered, I was on a team of 7 guys, we ultimately did not do well. The next year however, the class had more resources
+            | and I was much more successful, placing in several competitions, winning one, and having the opportunity to go to the world competition. This 
+            | class is where I decidedly found my love for Engineering and eventually went on to MIT when I was given the opportunity. 
+          br
+          a(href='/vexRobotics')
+            h4 Read More
+      br
+      .row
+        .col-lg-4.col-lg-offset-4.text-center
+          a(href='/projectList')
+            h1 Project List
+
+  script(type="text/javascript", src="/javascripts/lightbox/lightbox.js")
+
+
+

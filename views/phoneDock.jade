@@ -1,0 +1,55 @@
+extends layout
+
+block head
+  title=title
+    
+  <!-- Custom styles for this template -->
+  link(rel="stylesheet", href="/stylesheets/lightbox/lightbox.css")
+  link(rel="stylesheet", href="/stylesheets/projects.css")
+
+
+block content
+  // navigation bar at top of all pages
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    //left title
+    #nav_arrow
+      .col-md-2
+        a(href='/')
+          i.fa.fa-arrow-left.fa-2x
+      .col-md-8
+        h1 iPhone Dock
+  <!-- Nav bar end-->
+
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        h1 Intro
+
+        p
+          | In the summer of 2013 I was given an opportunity to go to Singapore and work in a quadracoptor lab at the Singapore University of Technology and Design,
+          | through an MIT program called MISTI. I took up the opportunity and spent 10 weeks in Singapore after my freshmen year at MIT. At that point, I didn't 
+          | know what I wanted to major in and study so while I was in Singapore I worked on several different projects one of which was an iPhone Dock. 
+
+        p
+          | This dock was designed using a CAD software called Solidworks. The base was 3D printed in plastic and the backing was laser cut and etched in acrylic. The
+          | symbol etched in the backing is an apple with a face cut out, in rememberance of Steve Jobs. This dock was specifically designed for an iphone using a Speck
+          | card carrying case. However, the dock dimensions allow for most iphones and cases to work. Below you can see a picture of the dock being
+          | constructed, and the dock in full use. The bottom of the dock uses a sticky pad to keep the dock in place while in use.
+        a(href='images/iPhoneDock/fullSize/dockBase.jpg', data-lightbox='dock')
+          img.img-responsive.center-block(src='/images/iPhoneDock/dockBase.jpg')
+        br
+        a(href='images/iPhoneDock/fullSize/finishedDock.jpg', data-lightbox='dock')
+          img.img-responsive.center-block(src='/images/iPhoneDock/finishedDock.jpg')
+        br
+        a(href='images/iPhoneDock/fullSize/front.jpg', data-lightbox='dock')
+          img.img-responsive.center-block(src='/images/iPhoneDock/front.jpg')
+        br
+        a(href='images/iPhoneDock/fullSize/side.jpg', data-lightbox='dock')
+          img.img-responsive.center-block(src='/images/iPhoneDock/side.jpg')
+        br
+        a(href='images/iPhoneDock/fullSize/back.jpg', data-lightbox='dock')
+          img.img-responsive.center-block(src='/images/iPhoneDock/back.jpg')
+            
+
+
+  script(type="text/javascript", src="/javascripts/lightbox/lightbox.js")

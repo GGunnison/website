@@ -1,0 +1,38 @@
+extends layout
+
+block head
+  title=title
+    
+  <!-- Custom styles for this template -->
+  link(rel="stylesheet", href="/stylesheets/lightbox/lightbox.css")
+  link(rel="stylesheet", href="/stylesheets/projects.css")
+
+
+block content
+  // navigation bar at top of all pages
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    //left title
+    .col-md-2
+      a(href='/')
+        i.fa.fa-arrow-left.fa-2x
+    .col-md-8
+      h1 Project List
+  <!-- Nav bar end-->
+
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        h2 Unstarted projects
+        ul
+          li Electric Skateboard
+          li Jeep infotainment system
+          li Induction room heater
+          li Beer keg
+
+        h2 Ongoing projects
+        ul
+          li This website
+          li LED Cube
+
+
+

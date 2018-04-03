@@ -1,0 +1,41 @@
+extends layout
+
+block head
+  title=title
+    
+  <!-- Custom styles for this template -->
+  link(rel="stylesheet", href="/stylesheets/lightbox/lightbox.css")
+  link(rel="stylesheet", href="/stylesheets/projects.css")
+
+
+block content
+  // navigation bar at top of all pages
+  nav.navbar.navbar-inverse.navbar-fixed-top
+    //left title
+    .col-md-2
+      a(href='/')
+        i.fa.fa-arrow-left.fa-2x
+    .col-md-8
+      h1 Mexico House Build
+  <!-- Nav bar end-->
+
+  .container
+    .row
+      .col-md-10.col-md-offset-1
+        h1 Intro
+        p
+          | While this was the first year for me to take part, this was the 13th house build that my family has been a part of. During the first week
+          | in August a team ranging from 25-60 travels down to La Mis&iacute;on, Mexico to build a house for a struggling family. This year our
+          | team, which comes from Yorba Linda Friends Church, had the wonderful opportunity to build a home for the Heranandez family. A family of 6,
+          | whom had almost nothing, had a house started and built for them over the course of 3 1/2 days, a life changing experience. Before going down,
+          | I had always wanted to see the "construction on steriods" for myself, so I made a video so you could see it too. 
+        br 
+
+        p
+          | This video captures around 40 hours of work, through pictures taken every 30 seconds, over 3 and 1/2 days and has been compressed into a 11 
+          | minute video. For a lightning fast playback, increase the video speed to 2x by editing the settings of the video. Enjoy! 
+
+        h3.text-center 
+          .video-container
+            iframe(width='640', height='360', src='https://www.youtube.com/embed/oPFUYf_q4HA', frameborder='0', allowfullscreen='')
+
