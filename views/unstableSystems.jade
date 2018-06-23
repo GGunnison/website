@@ -25,5 +25,28 @@ block content
         h2 Intro
 
         p 
-          | In the Spring of 2016 I took a controls class that focused on the stabilization of 
+          | In the Spring of 2016 I took a controls class that focused on the several different types of control methodologies. PID, State Space, and implicit models were the three we focused the most on. There were two projects in particular that I think show well and require a reasonable effort/wit to make work. The first of which is a pole balancing problem that we manifested into a two wheeled robot. Below is the video
 
+        h3 Self Balancing Robot
+        .video-container
+          iframe(width='640', height='360', src="https://www.youtube.com/embed/KyrThkRk1IE", frameborder='0', allowfullscreen='')
+        br
+
+        p
+          | This was achieved on a high level using a PID controller using a sliding window. Due to the inaccurancy of the sensors we had, we fused the data of both a gyro and an accelerometer to take care of drift and decrease the overall noise of the system. All in all it ended up working pretty well. We got a bit of help by putting the robot on a piece of carpet, otherwise it would tend to overcompensate and fall over after about 20 seconds or so. We chalked this up to not having enough torque in the motors to control the mass of the robot. (We we're unable to tune this out after having implemented several different techniques to get the controller to be more stable.) You can take a look at the code here if you'd like. 
+
+        a(href="https://github.com/leftger/6302-project") Balancing Robot Code Repo
+        
+        h3 Magnetic Stabilization
+        p
+          | The second project was a suspension project where we attached magnets to a Lego and suspended it in air using an electro magnet. This proved to be fairly difficult as its like trying to balance a ball on the tip of a mountain. It does not naturally settle into a point of stability, but rather repels from its point of stability. Granted there is a small range of area of stability, so I suppose its like a ball sitting on a perfect triangle that has just the very tip cut off, but again, not the easiest problem. In addition, it isn't clear where the stable region is in space and depending on the settings of your electromagnet it could be an 1/8" away from one of the electromagnet or more than 1" away. (This is a tuneable setting however and should be able to be predicted.)
+
+        p
+          | Our basic setup was to stabilize the system by reading two hall effect sensors that we connected to the electromagnet. Unfortuantely, I am writing this up quite a while after having done the lab and don't remember all of the math we used to stabilize our mass. To make matters worse I no longer have the notes either. But all in all it was a very cool lab and ended up being fairly robust!
+
+        p
+          | Check out the video below!
+
+        .video-container
+          iframe(width='640', height='360', src="https://www.youtube.com/embed/4jfRIl8nVuU", frameborder='0', allowfullscreen='')
+        br 

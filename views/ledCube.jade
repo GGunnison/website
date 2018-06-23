@@ -21,5 +21,222 @@ block content
   <!-- Nav bar end-->
   .container
     .row
-      
+      .col-md-10.col-md-offset-1
+
+        h1 Intro
+
+        p
+          | During my last year as an undergrad I took a microelectronics class, otherwise known as 6.115 at MIT. It's taught by Steve Leeb, and is certainly one of the most eye-opening courses at MIT. In lower level courses, MIT does a phenomenal job at teaching theory and providing the fundamentals necessary to design parts & systems; however, I found that there was a lack of application. While it is difficult to give every class the wow-factor that 6.115 has, I wish there was a larger push for students to build more and "make things work" to give them a more practical basis. Most of the lack for lab skills is made up in 6.115 & 6.131 however, if you are ambitious enough to take both. Taking both gave me confidence that I was able to build something without having to bang my head against the wall for hours on end wondering why something wasn't working as I intended it to. 
+
+        p
+          | Over the semester Steve painstakingly drives you through 5 labs and a final project, each of which likely takes 1.5-2x longer than it should, but each teaches you a valuable skill. First from reading data sheets to understanding ASM and eventually on to controlling motors and using interrupt routines concisely and consistently. Each lab builds your skills and in many cases works off previous labs to build up more complicated systems with ever larger tasks to achieve. The class culminates in a single final project which is open ended and almost completely free of scope. This allows students to built almost anything they want as long as they are willing to invest the time. 
+
+        p
+          | At the beginning of the course I saw a video online about an LED cube and thought it would be fun to build one myself. When final project time came around I decided I'd give it a shot. While I may have seriously underestimated the amount of time it would require to build, I finished it and will walk you through here what I did, thought I will lament, not every detail.
+
+        p
+          | The first challenge I faced, was actually building the cube itself. I decided that I was going to probably want to make an arcade style game out of the cube at some point and decided that I was going to need something fairly substantial in size to make that practical. However, the amount of work increases very rapidly with size. For example, its nearly twice the amount of hardware to build a 10x10x10 cube than it is to build an 8x8x8 cube. You'll see in the following paragraphs that I ended up settling to build an 8x8x8 cube, but didn't built all the electronics to control the whole thing while I was in class due to time constraints. I later finished the cube and do have a program running on it now.
+
+        h1 Building the Cube
+
+        p
+          | To get a better idea of what I mean by the cube here is a picture of what I built.
+        
+
+        a(href='/images/ledCube/cube.png', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/ledCube/cube.png')
+        br
+
+        h3 Structure 
+        p
+          | Conceptually the cube is a simple structure repeated over and over again. Each LED is a common anode LED where the anode is tied to a level of the cube and the cathode is tied to a column. To activate an LED both the level and the column must be activated. Below are a few pictures of the jigs I used to solder the cube together. I first started out bending the legs of the LEDs so that I could easily place wire through them. You can imagine how long it would take to bend 512 LEDs into this shape ;). The picture below is of an LED after the excess metal was trimmed, but you can see how small holes were bent on the ends of each leg here.
+
+        a(href='/images/ledCube/smalljig.jpg', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/ledCube/smalljig.jpg')
+        br
+
+        p
+          | The LED's were then each pressed into another jig seen below. The anodes were lined up and a piece of straightened wire was slipped through the aligned holes and soldered into place. As far as getting perfectly straight wire, just use a drill to straighten it off of a spool and cut it to the required length. It's quick and works well. Again, this isn't difficult, but the volume is large so find a good tv show or something to watch while you're doing this.
+        p
+          strong Make sure to check that the LEDs work at every step, you'll find a few that don't work and it gets much more difficult to replace them after each step!
+
+        a(href='/images/ledCube/medjig.jpg', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/ledCube/medjig.jpg')
+        br
+
+        p
+          | Once you've gotten all of the anode strips soldered you can move to the larger jig to build vertical slices of the cube. As seen below, this jig aligns 8 anode strips and aids in soldering in the columns. This is the most important part, having consistency here makes the cube look significantly better, you'll want to make sure that the legs of the solder joint are spaced appropriately here so they don't short on each other and that EVERY solder joint is done properly. Fixing them after this point can be a huge pain. 
+        p
+          strong Again, make sure that each of the LEDs work after soldering this together. You absolutely do not want to have to replace an LED after this step.
+
+        a(href='/images/ledCube/largejig.jpg', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/ledCube/largejig.jpg')
+        br
+
+        p
+          | Once you've done all of the levels you'll want to cut a board to set the cube into. If you take a look at the picture at the top of this write up you'll notice the box that the cube is sitting in has holes for every leg of the cube. This was done using a laser cutter for consistency and spaced according to the relative dimensions that I used the the columns in my cube, but you can use whatever you'd like! I'd highly suggest doing this to keep the the cube from getting bent and moved around, once it is all soldered together it is fairly rigid, but the wire is only so thick and can be bent easily if knocked around much.
+
+
+        h3 Electronics
+
+        p
+          | Now that we have the structure of the cube together. NOTE: It took me around 40 hours to get the cube itself soldered together. There are a couple thousand solder joints so make sure you have a fan with a filter! 
+
+        p
+          | To control the cube I made two simple circuits to activate each level and column. They are shown below.
+
+        a(href='/images/ledCube/cathode.png', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/ledCube/cathode.png')
+        br
+        a(href='/images/ledCube/anode.png', data-lightbox='start', alt='')
+          img.img-responsive.center-block(src='/images/ledCube/anode.png')
+        br
+
+        p 
+          | The first picture shows the circuit that controls each column of the cube, there are 64 of these circuits for each color, 192 in total. The value of R3 is dependent on the color of the LED, due to the forward voltage of the LED, different size resistors need to be put in place to balance the current. Blue uses roughly 50 ohms, Red and green use 100 ohms.
+        p
+          | The second picture shows the circuit that controls the anodes of the cube. All of the anodes for each level of the cube are tied together. This means that 64 LEDs are tied to this circuit. It must handle quite a bit more current, which is why there is a PNP BJT that is significantly more beefy than the NPN BJT's used elsewhere. However, since I wanted the control signals to all be active high, I attached an NPN to the front of the PNP to maintain that across the cube. This circuit also has a sizeable capacitor hooked up to the collector and a pull down resistor attached to the emittor to help snap the LED's quickly to the level we are looking for.
+
+        p
+          | Each of these circuits is connected to a pin of a shift register. There is a string of 9 shift registers for each color, starting with the anode shift registers. This means that when a "level" is pushed into the shift registers, the first 64 bits depict the columns in the cube and the last 8 bits depict the levels of the cube. The part I used for this was an SN74HC595N. Using the datasheet will allow you to understand how to string them together. You can find the
+          a(href='/images/ledCube/shiftRegister.pdf', data-lightbox='start', alt='')  SN74HC595N DATASHEET HERE!
+
+        p 
+          | Now that we have our control hardware setup, we need to be able to send signals to it. While I was in 6.115 Steve provided a board called the R31JP that interfaced with our computer and had easy to access I/O ports for the 8051 MCU we were using. There was additional functionality, but we'll leave that out for now as the details are not important now. What is important is that once I left the class I lost the R31JP so I needed to build my own solution. I first chose an MCU I believed would meet my requirements and then built a way to interface that with my computer so I could write software once again. 
+
+
+        p
+          | The micro I chose to do this was an Atmel3216PU. It offers 32K Bytes of program space, 2K Bytes of RAM, 16 MIPs and up to 32 I/O pins. Given that I didn't know how many I/O pins I would need, having quite a few of these was important. There was uncertainty around what sort of use interfaces I would provide and how many I/O pins that would take up. Additionally I anticipated writing several programs and wanted a large program space so having 32K Bytes of space afforded quite a bit. However, one of the biggest factors was speed (we'll get to this later), but I needed quite a bit of speed to accomplish what I wanted to with the cube. In order to control the shift registers I needed 4 pins on the micro: SRCLK, RCLK, OE, & Data. Given that I would use 3 colors and want independent control of them, I would need 12 pins. See how quickly they get taken up!
+
+        p
+          | We'll get to software in a bit, but first there are a few other pieces we need to connect. First the internal clock doesn't get up to the speed we need so an exteral clock needs to be added. I chose a 16MHz crystal to maximize the throughput. Looking in the datasheet will show you how to connect that properly, make sure to configure your files properly so that the micro knows it is supposed to be using the external clock! This takes up another 2 pins. You can find the data sheet for this particular micro controller
+          a(href='/images/ledCube/atmega32.pdf', data-lightbox='start', alt='')  ATMEGA3216PU HERE!
+        p
+          | Lastly, we need to be able to talk to the microcontroller from our computer. We'll need to be able to do two things. One, burn a program into the microcontroller, which will be done using a usbasp programmer. Simply match the pins on the programmer to the pins on the MCU to connect it. Secondly, we will want a serial connection so that we can interact with the program put on the microchip in real time. This is not necessary, but practically a requirement if you want any help debugging code and certainly nice to have for building some fun little programs. The datasheet outlines how to connect a serial connection to the MCU, you'll need a serial to usb adapater to interface with your computer. Connecting both of these interfaces eats up another 6 pins! Without adding controllers or a LCD screen, speakers or what have you, we've used more than half of the pins on the MCU, they go quick!
+
+
+
+        h4 Improvements
+        p 
+          | In hindsight I would not have designed the anode circuit the way I did and instead would have gotten a different NPN BJT that could handle the current requirements of each level and gotten rid of the PNP BJT altogether, but regardless it works. Fortunately, there are only 8 Anode circuits and this doesn't add too much to the BOM or overall complexity.
+
+        p
+          | I haven't quite gotten there yet, but I would like to get these boards printed on PCB's instead of being soldered together on proto boards. Eventually I will have all the colors connected as well, but will wait to have the board to get that done, it is a significant amount of soldering time to just get a single color done!
+
+        h1 Software
+
+        p
+          | Up to this point we haven't talked about much that is frankly terribly interesting. Designing this system in its base form was a bit of a learning experience for me since I haven't had to do it on my own; however, all things told, this is a pretty simple MCU setup with a large of amount of highly repetitive hardware. However, the amount that can be done with this hardware is truly astonishing and the complexity that sits behind the hardware on the software is what really excites me. I haven't scratched the surface of what can be done with this cube, but it is an interface with an endless number of options. From the first time I saw someone with one built I wanted to build a 3D snake game, I haven't quite gotten there, but I have set up everything necessary at this point to make that happen it is just a matter of sitting down and building the game itself. It was no short journey to get here!
+
+        p
+          | 6.115 does a phenomenal job of throwing you into the ocean and making you figure out what is what; however, it certainly does abstract away quite a bit of the complexity with the board that is provided to you and certainly does not provide you with all the knowledge to be successful as an embedded systems engineer, but absolutely gets you literate and drives home lots of extremely important concepts. 
+
+        p
+          | When I started building this cube on my own, I quickly noticed quite a few of my own knowledge gaps. It was a little discouraging at first, I hit a few walls building this cube and at a couple of points had to step away from it for a couple of weeks because I was completely stuck. However, all in all, I've solved all of these problems and got it working :) .
+
+        h3 Final Project
+        p
+          | So back to software. When I was in 6.115 I did not get the whole cube working due to time constraints. With all the other projects and finals I had I was only able to slave away in my house for so long. Here is a picture of me working on it though. 
+
+        a(href='/images/ledCube/Dorm.jpg', data-lightbox='start', alt='')
+        img.img-responsive.center-block(src='/images/ledCube/Dorm.jpg')
+        br
+        
+        p
+          | I did get a basic program running on it which can be seen below. The cube slowly increases in frequency cycling through the levels until it reaches a frequency that provides persistance of vision. At this point it switches between two different states, a small cube and the outline of a larger cube. This was written in ASM and the program can be found in a github repo 
+          a(href='https://github.com/GGunnison/6.115-Final-Project/blob/master/final', data-lightbox='start', alt='') HERE!
+
+        .video-container
+          iframe(width='640', height='360', src='https://www.youtube.com/embed/_bp-FiO0v3A', frameborder='0', allowfullscreen='')
+        br
+
+        p
+          | One of the cooler things about that video is that you can see the control signals toggling on the scope and also the relative speed of them changing over time as the frequency increases. Unfortunatley at this point I don't know which signals correspond to which color, but the video provides a bit of a perspective on the bits being pushing into the shift registers and the pins being toggled to make the cube light up. 
+
+        h1 Work After Class
+
+        p
+          | I effectively put the cube away after class and didn't touch it again for about a year and even then didn't do much with it. It wasn't until after I came home and we closed our business did I find the time to work on it and make some real progress on it. This is the current state of the cube as of June 2018. Sad I know :( eventually I'd like this thing to look beautiful, but it does function fairly well these days.
+
+        a(href='/images/ledCube/juneCube.jpg', data-lightbox='start', alt='')
+        img.img-responsive.center-block(src='/images/ledCube/juneCube.jpg')
+        br
+
+        h3 Building Blocks
+        p
+          | If you remember, I breifly mentioned the use of shift registers and how we needed to use 4 pins on the MCU to control them and display images on the cube.  One for Data, SRclk, Rclk, & Output Enable. The basic plan to print something to the cube is to shift 72 bits in place, one cycle at a time, and once all are in place, we'll store them in the shift registers and enable them to output. While these 72 bits are being displayed we are shifting the next 72 bits in place to be displayed. This must be done because of the way the cube is multiplexed, only one level can be individually addressed at a time. That sounds like a problem, not being able to address all 512 LEDs independently; however, if they levels are cyccled through at a fast enough rate, our eyes cannot tell that only 1 level is on at a time. This concept is called persistence of vision. For example if something is flickering above a rate that our eyes can discern then the object will look as though its not flickering at all. This rate is typically above 60Hz, but as I've experienced with cube, it needs to move at about 80-100Hz to not flicker. 
+        p
+          | The plan specifically with the shift registers is to clock a data bit in with the SRclk, every time it is high we toggle the data line to put in the bit we want. Once all 72 bits are in, the Rclk is toggled high to latch those bits in place. The Output enable pin is then toggled to display those bits, I actually leave the output enable pin on at all times since we also want to be displaying something.
+        p
+          | I told you we'd talk about speed. If we were able to shift each bit 1 cycle at a time, we'd need 144 cycles to shift our information in and 4 cycles to latch it and display it. We must use 1 cycle for each high and low clock, which doubles our number of cycles. Additionally we need to do this 8 times per vertical cycle through the cube and we need to complete these cycles at a minimum of 80 times per second. This means we need to have a clock rate of at least 94,720 Hz. However, not every instruction is a single cycle which quickly adds to our clock rate. For instance accessing the correct place in memory to push data into the shift registers can take several cycles. In fact, it takes quite a few. To write to the each level takes approximately 4,000 cycles, instead of the 148 we used earlier. We're not going to get into why this is necessarily, but this means that it takes roughly 32,000 cycles to write all 8 levels. Given that we need to complete these 32,000 cycles every 80Hz. Writing to the cube will utilize at least 16% of our processor. Fortunately this allows us ample amount of processor time to other tasks to expand the functionality of the cube. 
+
+        p
+          | However, just meeting the minimum allocation of time to writing the LEDs will leave them dim and the computational allocation realistically is more like 50%. The 8051 Atmel processor we used in 6.115 operated at 1MHz which would have been an issue, to make it work we would have had to redisgn the control hardware and would have not strung 9 shift registers together in serial. But even then, it would have been tricky to control the whole cube with that amount of processing speed and do any extra logic in the background.
+
+        p
+          | The good news is that even 50% of the available cycles is a significant amount of processing power and whatever we'd like to do in the background while the cube is displaying things will likely be paltry in effort. Realistically we'll only need about 10-25% of the total processing power to do anything we'd like to do.
+
+        h5 Libraries
+        p
+          strong UARTLib.h
+          br
+          strong  (Note serial connection must send termination string for echo from MCU)
+          br
+          |   InitUART(): Sets up communication according to the settings your application demands
+          br
+          |   Init_receive(): receives a single byte at a time
+          br
+          |   Init_send(): sends a single byte at a time.
+        br
+        p
+          strong writeToCube.h
+          br
+          | WriteToLevel(): This will write a single level to the cube provided the information you'd like it to write
+          br
+          | WriteFullCube(): This calls writeToLevel() and will write all levels of the cube one time.
+
+        br
+        p
+          strong cubeData.h
+          br
+          | This is a library of data structures. The data structure is a array of 8 arrays of 9 bytes. Each of the 9 bytes is a row, where the first 8 are rows on a horizontal level and the last depicts the levels of the cube. Each byte uses a single bit to depict the state of the LED in that row, 1 for being on and 0 for being off. The larger 8 arrays each depict a level of the cube. In this library there is a data structure for every letter of the alphabet, 0-9,?, !, ., :, -, & =. All of this is stored in program memory, so it must not be mutated due to the relatively lower life span of that type of memory.
+
+        p
+          | There are also some messages stored here for the small OS that was built to interact with the cube via my computer keyboard. These are also stored in Program memory. 
+
+        h3 Phrase Display
+
+        p 
+          | It took me a while to get all the interfacing up and build a few libraries and the database to write to the cube and what not. But now that we know what we have available to us writing a few little programs will be significantly easier. 
+
+        p
+          | The code for this program can be found 
+          a(href='https://github.com/GGunnison/LED-Cube/blob/master/modular/firmware/main.c', data-lightbox='start', alt='') HERE!
+
+        p
+          | The base part of this program is created using an interrupt that calls the writeFullCube at an interval set by a variable called brightness. Its available range is 15-100% 
+        p
+          | A second interrupt provides the logic for the program. The majority of this logic is built to interface with the serial emulator terminal on my computer. There are several commands that the MCU will interpret. Upon booting, the MCU will send a welcome message that explains if you've never used it before you can get a help message by sending it -H. 
+
+        p
+          strong NOTE: the serial monitor must send a terminal string to receive the letters, that is how the MCU knows that is the last of the bits it is going to receive. 
+
+        p
+          | -C : clears whatever the cube is displaying
+          br
+          | -W : allows you to write a word or phrase to the cube, up to 40 characters long.
+          br
+          | -T : allows you to set the duration a letter is displayed for, from 10ms to 4s.
+          br
+          | -B : sets the brightness of the LEDs 
+          br
+          | -R : This will allow you to set the color using a hex RGB color code. (Note currently functional)
+
+        p
+          | Here is a video of the cube in use:
+          br
+
+        .video-container
+          iframe(width='640', height='360', src='https://www.youtube.com/embed/zzNNOLwe1hI', frameborder='0', allowfullscreen='')
+        
         
